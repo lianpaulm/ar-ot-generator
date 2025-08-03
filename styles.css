@@ -1,0 +1,144 @@
+body {
+  font-family: 'Montserrat', sans-serif;
+  max-width: 900px;
+  margin: auto;
+  padding: 2rem;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+input,
+select {
+  padding: 8px 12px;
+  font-family: inherit;
+  border: 1px solid #333;
+  margin: 5px 0;
+}
+
+input[type="time"] {
+  padding: 6.5px 12px;
+}
+
+button {
+  font-family: inherit;
+  padding: 8px 16px;
+  margin-top: 20px;
+  cursor: pointer;
+  background: #333;
+  color: #f9f9f9;
+}
+
+/* Tab Hidden by Default */
+#overtimeTab,
+#accomplishmentTab,
+#claim,
+#remarks {
+  display: none;
+}
+
+/* Table Styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th,
+td {
+  padding: 8px 10px;
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid #999;
+}
+
+/* General Plus Button Column (OT + ACC) */
+th.plus-col,
+td.row-action {
+  width: 32px;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  border: none;
+  font-weight: bold;
+  background: transparent;
+}
+
+/* Hidden by default */
+.row-action {
+  opacity: 0;
+  cursor: pointer;
+  color: #f9f9f9;
+  transition: opacity 0.2s ease;
+}
+
+/* Show only on tbody row hover */
+tbody tr:hover .row-action {
+  opacity: 1;
+  background: #333;
+}
+
+/* Prevent background/border shift on tbody row hover */
+tbody tr:hover {
+  background: transparent;
+  border: none;
+}
+
+/* Hide thead plus icon behavior */
+thead .row-action {
+  opacity: 0 !important;
+  pointer-events: none;
+  background: transparent;
+}
+
+/* Remove border/background from first <th> (Plus col) */
+thead th:first-child {
+  border: none;
+  background: transparent;
+}
+
+/* Table-specific adjustments */
+#acc-table,
+#ot-table {
+  /* Offset to align plus column */
+  margin-left: -36px;
+  width: calc(100% + 36px); /* Expand width to compensate for left shift */
+}
+
+/* Column widths for accomplishment table */
+#acc-table th:first-child,
+#ot-table th:first-child {
+  width: 36px;
+  min-width: 36px;
+  max-width: 36px;
+  padding: 0;
+  text-align: center;
+}
+
+#acc-table th:nth-child(2) {
+  width: 35%; /* Date or Day */
+}
+
+#ot-table th:nth-child(3), 
+#ot-table th:nth-child(4),
+#ot-table th:nth-child(5) {
+  width: 15%;
+}
+
+#acc-table th:nth-child(3),
+#ot-table th:nth-child(6) {
+  width: 100%; /* Task or Work */ 
+}
+
+/* Utility */
+.button-group {
+  margin-bottom: 20px;
+}
+
+/* Truncated task text */
+.work-cell {
+  max-width: 100px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 14px;
+}

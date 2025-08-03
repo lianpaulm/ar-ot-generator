@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AR/OT Sheet Generator</title>
+
+  <script src="https://unpkg.com/pizzip@3.1.5/dist/pizzip.min.js"></script>
+  <script src="https://unpkg.com/docxtemplater@3.37.1/build/docxtemplater.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/exceljs@4.3.0/dist/exceljs.min.js"></script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+ <h2>AR/OT Sheet Generator</h2>
+
+<div class="button-group">
+  <button onclick="showTab('accomplishmentTab')">Accomplishment</button>
+  <button onclick="showTab('overtimeTab')">Overtime</button>
+</div>
+
+<!-- ACCOMPLISHMENT TAB -->
+<div id="accomplishmentTab">
+  <h3>Accomplishment Form</h3>
+
+  <label>
+    Period (For the month of):
+    <select id="acc_month"></select>
+    <select id="acc_day_range"></select>
+    <select id="acc_year"></select>
+  </label>
+
+  <br><br>
+
+  <form id="accForm">
+    <input type="number" id="acc_day" placeholder="Day (e.g. 1)" required />
+    <input type="text" id="acc_task" placeholder="Task accomplished" required />
+    <button type="submit">Add Entry</button>
+  </form>
+
+  <table id="acc-table">
+    <thead>
+    <tr>
+      <th></th> <!-- Button column -->
+      <th>Date</th>
+      <th>Task</th>
+    </tr>
+    </thead>
+    <tbody id="accTableBody"></tbody>
+  </table>
+
+  <br>
+  <button id="generateAccWord" >Generate Accomplishment Word</button>
+</div>
+
+<!-- OVERTIME TAB -->
+<div id="overtimeTab" >
+  <h3>Overtime Form</h3>
+
+  <label>
+    Period (For the month of):
+    <select id="period_month"></select>
+    <select id="period_range"></select>
+    <select id="period_year"></select>
+  </label>
+
+  <br><br>
+
+  <label>
+    Date of Application:
+    <input type="date" id="date_application" required />
+  </label>
+
+  <br><br>
+
+  <form id="otForm">
+    <input type="number" id="day" placeholder="Day (e.g. 1)" required />
+    <select id="day_of_week">
+      <option value="Monday">Monday</option>
+      <option value="Tuesday">Tuesday</option>
+      <option value="Wednesday">Wednesday</option>
+      <option value="Thursday">Thursday</option>
+      <option value="Friday">Friday</option>
+      <option value="Saturday">Saturday</option>
+      <option value="Sunday">Sunday</option>
+    </select>
+    <input type="time" id="from" value="16:00" required />
+    <input type="time" id="to" value="18:00" required />
+    <input type="text" id="work" placeholder="Task accomplished" required />
+    <select id="claim">
+      <option value="ES">ES PAY</option>
+      <option value="COC">COC</option>
+      <option value="BOTH" selected>ES & COC</option>
+    </select>
+    <input type="text" id="remarks" placeholder="Remarks" />
+    <button type="submit">Add Entry</button>
+  </form>
+
+ <table id="ot-table">
+  <thead>
+    <tr>
+      <th class="plus-col"></th>
+      <th>Day</th>
+      <th>Day of week</th>
+      <th>From</th>
+      <th>To</th>
+      <th>Work</th>
+    </tr>
+  </thead>
+  <tbody id="otTableBody"></tbody>
+</table>
+
+  <br>
+  <button id="generateWord" disabled>Generate Word</button>
+  <button id="generateExcel" disabled>Generate Excel</button>
+</div>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
